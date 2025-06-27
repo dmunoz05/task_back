@@ -1,6 +1,6 @@
-# 🧪 API de Usuarios y Tareas (Microservicios)
+# 🧪 API Tareas (Microservicio)
 
-Este proyecto es una solución de arquitectura orientada a microservicios que gestiona usuarios y tareas. Incluye autenticación básica y CRUD de tareas, todo desarrollado con **Node.js**, **Express**, **Sequelize** y **MySQL**, junto a un frontend en React (opcional).
+Este proyecto es una solución de arquitectura orientada a microservicios que gestiona tareas. Incluye un CRUD de tareas, todo desarrollado con **Node.js**, **Express**, **Sequelize** y **MySQL**, junto a un frontend en React (opcional).
 
 ## 📦 Tecnologías utilizadas
 
@@ -26,5 +26,5 @@ Este proyecto es una solución de arquitectura orientada a microservicios que ge
 ### 🛠️ 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/usuario/nombre-repo.git
-cd nombre-repo
+git clonehttps://github.com/dmunoz05/task_back.git
+cd task_back

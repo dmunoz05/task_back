@@ -34,13 +34,12 @@ export const createTask = async (req, res) => {
 // Actualizar una tarea existente
 export const updateTask = async (req, res) => {
   try {
-    const { title, completed } = req.body;
+    const { id, title, completed } = req.body;
+
+    if (!id) return res.status(400).json({ message: "ID es requerido" });
 
     const task = await Task.findOne({
-      where: {
-        id: req.params.id,
-        userId: req.userId
-      }
+      where: { id, userId: req.userId }
     });
 
     if (!task) return res.status(404).json({ message: "Tarea no encontrada" });
@@ -56,9 +55,13 @@ export const updateTask = async (req, res) => {
 // Eliminar una tarea
 export const deleteTask = async (req, res) => {
   try {
+    const { id } = req.body;
+
+    if (!id) return res.status(400).json({ message: "ID es requerido" });
+
     const rowsDeleted = await Task.destroy({
       where: {
-        id: req.params.id,
+        id,
         userId: req.userId
       }
     });
