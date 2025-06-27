@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const allowedOrigins = process.env.NODE_ENV === "production"
-  ? ["https://task_front.vercel.app"]
+  ? ["https://task-front-flax.vercel.app", "https://task-front-flax.vercel.app/"]
   : ["http://localhost:1600", "http://localhost:5173", "http://localhost:5174"];
 
 const corsOptions = {
