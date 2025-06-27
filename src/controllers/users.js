@@ -1,10 +1,9 @@
 import getConnection from "../database/connection.mysql.js";
 import { variablesDB } from "../utils/params/const.database.js";
 import { variablesJWT } from "../utils/params/const.jwt.js";
+import User from "../models/users.model.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-
-const SECRET_KEY = variablesJWT.jwt_secret;
 
 export const validateToken = (req, res) => {
   const authHeader = req.headers.authorization;
@@ -21,4 +20,26 @@ export const validateToken = (req, res) => {
   } catch (err) {
     return res.status(401).json({ message: "Token inválido o expirado" });
   }
+};
+
+export const registerUser = async (req, res) => {
+  const { username, password } = req.body;
+  const hash = await bcrypt.hash(password, 10);
+  try {
+    await User.create({ username, password: hash });
+    res.status(201).json({ message: "Usuario registrado" });
+  } catch {
+    res.status(400).json({ message: "Error al registrar usuario" });
+  }
+};
+
+export const loginUser = async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ where: { username } });
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    return res.status(401).json({ message: "Credenciales inválidas" });
+  }
+
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
+  res.json({ token });
 };
