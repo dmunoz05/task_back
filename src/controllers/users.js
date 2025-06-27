@@ -3,6 +3,7 @@ import User from "../models/users.model.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
+// Validar el token JWT
 export const validateToken = (req, res) => {
   const authHeader = req.headers.authorization;
 
@@ -20,6 +21,7 @@ export const validateToken = (req, res) => {
   }
 };
 
+// Registrar un nuevo usuario
 export const registerUser = async (req, res) => {
   const { username, password } = req.body;
   const hash = await bcrypt.hash(password, 10);
@@ -31,6 +33,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
+// Iniciar sesión de usuario
 export const loginUser = async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ where: { username } });
