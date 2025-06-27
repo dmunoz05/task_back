@@ -1,5 +1,3 @@
-import getConnection from "../database/connection.mysql.js";
-import { variablesDB } from "../utils/params/const.database.js";
 import { variablesJWT } from "../utils/params/const.jwt.js";
 import User from "../models/users.model.js";
 import jwt from "jsonwebtoken";
