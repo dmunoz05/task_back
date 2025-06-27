@@ -21,6 +21,27 @@ Este proyecto es una solución de arquitectura orientada a microservicios que ge
 - MySQL server local (o remoto)
 - Git
 
+## 💻 Variables de Entorno
+Cada microservicio requiere un archivo .env en su raíz para funcionar correctamente.
+
+Así debe ser la estructura básica que debe tener este archivo:
+
+# Base de datos
+MYSQL_HOST = "localhost"
+MYSQL_PORT = "3306"
+MYSQL_USER = "root"
+MYSQL_PASSWORD = "contraseña"
+MYSQL_DATABASE = "database"
+
+# Configuración de la aplicación
+NODE_ENV = "development"
+PORT = "3000"
+
+# Secrets
+API_KEY = "api_key"
+JWT_SECRET = "jwt_secret"
+JWT_ALGORITHM = "HS256"
+
 ---
 
 ### 🛠️ 1. Clonar el repositorio

@@ -6,7 +6,7 @@ import cors from 'cors';
 
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +29,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use('/server/v1', routes());
+app.use('/server/task', routes());
 
 // Ruta de prueba
 app.get('/', (req, res) => {
@@ -42,7 +42,7 @@ app.listen(PORT, async () => {
     await sequelize.authenticate();
     console.log("\n✅ Base de datos conectada correctamente (Sequelize)\n");
     console.log("*****************************************************\n");
-    console.log(`🚀 Servicio iniciado en http://localhost:${PORT}/server/v1\n`);
+    console.log(`🚀 Servicio iniciado en http://localhost:${PORT}/server/task\n`);
     console.log("***************************************************");
   } catch (error) {
     console.error("\n***************************************************");
